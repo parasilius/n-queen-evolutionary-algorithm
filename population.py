@@ -1,6 +1,6 @@
 import numpy as np
 from math import ceil
-from random import rnd
+from random import randint
 from chromosome import Chromosome
 
 class Population:
@@ -9,21 +9,27 @@ class Population:
         self.population_size = population_size
         self.mutation_rate = mutation_rate
         # creating initial population
-        self.population = []
+        self.chromosomes = []
         for _ in range(population_size):
-            self.population.append(Chromosome(self.n))
+            self.chromosomes.append(Chromosome(self.n))
 
     def recombine(self) -> None:
         for i in range(0, self.n, 2):
-            s1 = self.reproduce(self.population[i], self.population[i + 1])
-            s2 = self.reproduce(self.population[i + 1], self.population[i])
-            self.population.append(s1, s2)
+            s1 = self.chromosomes[i].reproduce(self.chromosomes[i + 1])
+            s2 = self.chromosomes[i + 1].reproduce(self.chromosomes[i])
+            self.chromosomes.append(s1)
+            self.chromosomes.append(s2)
 
     def mutate(self) -> None:
         sample_indices = np.random.choice(self.population_size, int(self.population_size * self.mutation_rate))
         for i in sample_indices:
-            self.population[i][rnd(0, self.n - 1)] = rnd(0, self.n - 1)
+            self.chromosomes[i].s[randint(0, self.n - 1)] = randint(0, self.n - 1)
+
+    def select(self) -> None:
+        self.chromosomes = self.chromosomes.sort()[:self.population_size]
+    
+    def solution_found(self) -> bool:
+        return max(self.chromosomes) == 1.0
 
 if __name__ == '__main__':
-    ga = Population(4, 2, 0.7)
-    print(ga.recombine([1, 3, 2, 0], [0, 0, 1, 3]))
+    p = Population(4, 2, 0.7)

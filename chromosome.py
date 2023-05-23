@@ -14,14 +14,14 @@ class Chromosome:
     
     def fitness(self) -> int:
         total_pairs = self.n * (self.n - 1) / 2
-        nonattackings = 0
+        attackings = 0
         for i in range(self.n):
             for j in range(i + 1, self.n):
                 if self.s[i] == self.s[j]: # row attackings
-                    nonattackings += 1
+                    attackings += 1
                 if abs(i - j) == abs(self.s[i] - self.s[j]): # column attackings
-                    nonattackings += 1
-        return nonattackings / total_pairs
+                    attackings += 1
+        return (total_pairs - attackings) / total_pairs
     
     def __repr__(self):
         return str(self.s)
