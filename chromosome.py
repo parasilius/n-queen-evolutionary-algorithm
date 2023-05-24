@@ -1,3 +1,4 @@
+from random import randint
 import numpy as np
 from math import ceil
 
@@ -7,7 +8,7 @@ class Chromosome:
         self.s = np.random.randint(n, size=n)
     
     def reproduce(self, other):
-        crossover_point = ceil(self.n // 3) + 1 # check random as well!
+        crossover_point = randint(1, self.n - 1)
         child = Chromosome(self.n)
         child.s = np.concatenate((self.s[:crossover_point], other.s[crossover_point:]), axis=None)
         return child

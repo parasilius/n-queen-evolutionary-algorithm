@@ -10,7 +10,7 @@ def genetic_algorithm(population: Population) -> Chromosome:
     return max(population.chromosomes)
 
 def main():
-    population = Population(4, 6, 0.8)
+    population = Population(5, 6, 0.8)
     print(genetic_algorithm(population))
 
 if __name__ == '__main__':
