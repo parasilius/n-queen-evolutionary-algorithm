@@ -9,11 +9,12 @@ class Chromosome:
     
     def reproduce(self, other):
         crossover_point = randint(1, self.n - 1)
+        #crossover_point = ceil(self.n // 3) + 1
         child = Chromosome(self.n)
         child.s = np.concatenate((self.s[:crossover_point], other.s[crossover_point:]), axis=None)
         return child
     
-    def fitness(self) -> int:
+    def fitness(self) -> float:
         total_pairs = self.n * (self.n - 1) / 2
         attackings = 0
         for i in range(self.n):
@@ -29,6 +30,18 @@ class Chromosome:
     
     def __lt__(self, other):
         return self.fitness() < other.fitness()
+
+    def __le__(self, other):
+        return self.fitness() <= other.fitness()
+
+    def __eq__(self, other):
+        return self.fitness() == other.fitness()
+
+    def __gt__(self, other):
+        return self.fitness() > other.fitness()
+
+    def __ge__(self, other):
+        return self.fitness() >= other.fitness()
 
 if __name__ == '__main__':
     ch1 = Chromosome(4)

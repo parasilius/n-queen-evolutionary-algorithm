@@ -14,7 +14,7 @@ class Population:
             self.chromosomes.append(Chromosome(self.n))
 
     def recombine(self) -> None:
-        for i in range(0, self.n, 2):
+        for i in range(0, self.population_size, 2):
             s1 = self.chromosomes[i].reproduce(self.chromosomes[i + 1])
             s2 = self.chromosomes[i + 1].reproduce(self.chromosomes[i])
             self.chromosomes.append(s1)
@@ -26,10 +26,10 @@ class Population:
             self.chromosomes[i].s[randint(0, self.n - 1)] = randint(0, self.n - 1)
 
     def select(self) -> None:
-        self.chromosomes = self.chromosomes.sort()[:self.population_size]
+        self.chromosomes = sorted(self.chromosomes)[self.population_size:]
     
     def solution_found(self) -> bool:
-        return max(self.chromosomes) == 1.0
+        return max(self.chromosomes).fitness() == 1.0
 
 if __name__ == '__main__':
     p = Population(4, 2, 0.7)
