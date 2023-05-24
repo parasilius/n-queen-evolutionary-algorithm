@@ -24,6 +24,29 @@ class Chromosome:
                 if abs(i - j) == abs(self.s[i] - self.s[j]): # column attackings
                     attackings += 1
         return (total_pairs - attackings) / total_pairs
+
+    def show(self):
+        print(f'string is {self}.\nRepresentation:')
+        for _ in range(4 * self.n):
+            print('_', end='')
+        print()
+        for i in range(1, self.n + 1):
+            for j in range(self.n):
+                if self.n - i == self.s[j]:
+                    print(' ♕ ', end='')
+                else:
+                    print('   ', end='')
+                if j < self.n:
+                    print('|', end='')
+            if i < self.n:
+                print()
+                for _ in range(4 * self.n):
+                    print('_', end='')
+                print()
+        print()
+        for _ in range(4 * self.n):
+            print('_', end='')
+        print()
     
     def __repr__(self):
         return str(self.s)
