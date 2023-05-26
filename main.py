@@ -16,8 +16,17 @@ def genetic_algorithm(population: Population) -> Chromosome:
     return None
 
 def main():
-    population = Population(8, 300, 0.8)
-    genetic_algorithm(population).show()
+    population = Population(16, 200, 0.8)
+    if population.n == 1:
+        print('Solution to 1-queen is trivial! Just fill the empty cell!')
+    elif population.n == 2 or population.n == 3:
+        print('No solution exists for N = 2 or 3!')
+    else:
+        solution = genetic_algorithm(population)
+        if solution:
+            solution.show()
+        else:
+            print('No solution found! Please try again...')
 
 if __name__ == '__main__':
     main()
