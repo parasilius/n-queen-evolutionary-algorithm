@@ -1,6 +1,6 @@
 from random import randint
 import numpy as np
-from math import ceil
+from board import Board
 
 class Chromosome:
     def __init__(self, n):
@@ -47,6 +47,8 @@ class Chromosome:
         for _ in range(4 * self.n):
             print('_', end='')
         print()
+        board = Board(self.s)
+        board.show()
     
     def __repr__(self):
         return str(self.s)

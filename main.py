@@ -13,9 +13,8 @@ def genetic_algorithm(population: Population) -> Chromosome:
     return None
 
 def main():
-    population = Population(5, 500, 0.8)
+    population = Population(5, 300, 0.8)
     genetic_algorithm(population).show()
-
 
 if __name__ == '__main__':
     main()
