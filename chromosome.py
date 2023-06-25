@@ -21,7 +21,7 @@ class Chromosome:
             for j in range(i + 1, self.n):
                 if self.s[i] == self.s[j]: # row attackings
                     attackings += 1
-                if abs(i - j) == abs(self.s[i] - self.s[j]): # column attackings
+                if abs(i - j) == abs(self.s[i] - self.s[j]): # cross attackings
                     attackings += 1
         return (total_pairs - attackings) / total_pairs
 
