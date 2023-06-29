@@ -1,8 +1,7 @@
-from chromosome import Chromosome
-from population import Population
+from nqueen.population import Population
 import time
 
-def genetic_algorithm(population: Population) -> Chromosome:
+def genetic_algorithm(population):
     limit = 300
     start_time = time.time()
     while not population.solution_found() and limit:
@@ -16,13 +15,13 @@ def genetic_algorithm(population: Population) -> Chromosome:
     return None
 
 def main():
-    population = Population(16, 200, 0.8)
-    if population.n == 1:
+    pop = Population(16, 200, 0.8)
+    if pop.n == 1:
         print('Solution to 1-queen is trivial! Just fill the empty cell!')
-    elif population.n == 2 or population.n == 3:
+    elif pop.n == 2 or pop.n == 3:
         print('No solution exists for N = 2 or 3!')
     else:
-        solution = genetic_algorithm(population)
+        solution = genetic_algorithm(pop)
         if solution:
             solution.show()
         else:

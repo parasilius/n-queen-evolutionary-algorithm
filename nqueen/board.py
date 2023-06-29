@@ -17,7 +17,7 @@ class Board:
         square_size = self.board_size//self.n
         white_colour = (238,238,210)
         black_colour = (0,0,0)
-        image = pygame.image.load('images/wQ.png').convert_alpha()
+        image = pygame.image.load('nqueen/images/wQ.png').convert_alpha()
         image = pygame.transform.scale(image, (square_size, square_size))
         #main
         def draw_squares(screen):

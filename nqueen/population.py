@@ -1,7 +1,6 @@
 import numpy as np
-from math import ceil
 from random import randint
-from chromosome import Chromosome
+from nqueen.chromosome import Chromosome
 
 class Population:
     def __init__(self, n: int, population_size: int, mutation_rate: int):

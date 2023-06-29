@@ -1,6 +1,6 @@
 from random import randint
 import numpy as np
-from board import Board
+from nqueen.board import Board
 
 class Chromosome:
     def __init__(self, n):
